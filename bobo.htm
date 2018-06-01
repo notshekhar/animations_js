@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BoBo</title>
+    <style media="screen">
+    .face{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      background: #1b6cfb;
+      margin-left: -50px;
+      margin-top: -50px;
+      border-radius: 50%;
+      border: solid;
+      border-width: 2px;
+      border-color: blue;
+      border-bottom-right-radius: 45%;
+      border-bottom-left-radius: 45%;
+      box-shadow: inset -4px -15px 20px 0px rgba(0,0,0,0.30)
+
+    }
+    .face:hover{
+      animation-name: bottomtotop;
+      animation-duration: 600ms;
+      animation-iteration-count: infinite;
+    }
+    @keyframes bottomtotop{
+      0%{
+        width: 100px;
+        height: 100px;
+      }
+      45%{
+        width: 120px;
+        height: 80px;
+        margin-left: -60px;
+        margin-top: -40px;
+      }
+      75%{
+        margin-top: -10px;
+      }
+      100%{
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .mouth{
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      margin-left: -25px;
+      border: solid;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+      border-width: 2px;
+      width: 50px;
+      height: 10px;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-color: blue;
+      box-shadow: 0px 6px 20px 1px rgba(0, 0, 0, 0.1)
+    }
+    .eyel{
+      position: absolute;
+      top: 30px;
+      left: 15px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      overflow: hidden;
+      box-shadow: inset -1px -1px 20px 0px rgba(0, 0, 0, 0.1);
+    }
+    .eyel_dot{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      margin-left: -5px;
+      margin-top: -5px;
+      background-color: black;
+      border-radius: 50%;
+    }
+    .eyer{
+      position: absolute;
+      top: 30px;
+      right: 15px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      overflow: hidden;
+      box-shadow: inset -1px -1px 20px 0px rgba(0, 0, 0, 0.1);
+    }
+    .eyer_dot{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      margin-left: -5px;
+      margin-top: -5px;
+      background-color: black;
+      border-radius: 50%;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="face">
+
+      <div class="eyer"><span class="eyer_dot"></span></div>
+      <div class="eyel"><span class="eyel_dot"></span></div>
+      <span class="mouth"></span>
+    </div>
+    <script type="text/javascript">
+    let eyer = document.querySelector('.eyer_dot')
+    let eyel = document.querySelector('.eyel_dot')
+    let mouth = document.querySelector('.mouth')
+    let face = document.querySelector('.face')
+    document.onmousemove = function(e){
+      eyer.style.top = e.clientY/window.innerHeight*100 + '%'
+      eyer.style.left = e.clientX/window.innerWidth*100 + '%'
+      eyel.style.top = e.clientY/window.innerHeight*100 + '%'
+      eyel.style.left = e.clientX/window.innerWidth*100 + '%'
+    }
+    face.onmousemove = function(e){
+      mouth.style.borderBottomLeftRadius = e.layerY/face.getBoundingClientRect().height*100+'%'
+      mouth.style.borderBottomRightRadius = e.layerY/face.getBoundingClientRect().height*100+'%'
+      // face.style.transform = 'rotate(-'+ e.layerX/face.getBoundingClientRect().width*100 +'deg)'
+
+      // mouth.style.borderTop = "solid"
+      // mouth.style.height = "2.3px"
+      // mouth.style.borderTopColor = "blue"
+      // mouth.style.background = "white"
+      // mouth.style.borderLeft = "solid"
+      // mouth.style.borderRight = "solid"
+      // mouth.style.borderWidth = "2px"
+      // mouth.style.borderBottomRadius = "50%"
+    }
+
+    </script>
+  </body>
+</html>
